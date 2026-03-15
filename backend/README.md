@@ -99,6 +99,7 @@ Indexes on `meter_readings(meter_id, timestamp DESC)`, `meters(organization_id)`
 ### Seed Data
 
 Migration seeds a default admin:
+
 - **Email:** admin@example.com
 - **Password:** admin123
 
@@ -106,19 +107,19 @@ Migration seeds a default admin:
 
 ## Tech Stack
 
-| Layer          | Technology                            |
-|----------------|---------------------------------------|
-| Runtime        | Node.js + TypeScript                  |
-| Framework      | Express.js                            |
-| DI Container   | typedi                                |
-| ORM            | TypeORM                               |
-| Validation     | class-validator + class-transformer   |
-| Auth           | jsonwebtoken + bcryptjs               |
-| Rate Limiting  | express-rate-limit                    |
-| API Docs       | Swagger (swagger-jsdoc)               |
-| Database       | PostgreSQL                            |
-| Testing        | Jest                                  |
-| Container      | Docker + Docker Compose               |
+| Layer         | Technology                          |
+| ------------- | ----------------------------------- |
+| Runtime       | Node.js + TypeScript                |
+| Framework     | Express.js                          |
+| DI Container  | typedi                              |
+| ORM           | TypeORM                             |
+| Validation    | class-validator + class-transformer |
+| Auth          | jsonwebtoken + bcryptjs             |
+| Rate Limiting | express-rate-limit                  |
+| API Docs      | Swagger (swagger-jsdoc)             |
+| Database      | PostgreSQL                          |
+| Testing       | Jest                                |
+| Container     | Docker + Docker Compose             |
 
 ---
 
@@ -157,24 +158,24 @@ All endpoints use a standardized response via `ApiResponse` helper:
 
 ## API Endpoints
 
-| Method | Endpoint                            | Access        | Description                    |
-|--------|-------------------------------------|---------------|--------------------------------|
-| POST   | /auth/login                         | Public        | Login, returns JWT             |
-| GET    | /organizations                      | Admin         | List organizations             |
-| POST   | /organizations                      | Admin         | Create organization            |
-| DELETE | /organizations/:id                  | Admin         | Delete organization            |
-| GET    | /users                              | Admin         | List users                     |
-| GET    | /users/:id                          | Admin         | User detail + assigned meters  |
-| POST   | /users                              | Admin         | Create user                    |
-| DELETE | /users/:id                          | Admin         | Delete user                    |
-| GET    | /meters                             | Authenticated | List meters (filtered by role) |
-| POST   | /meters                             | Admin         | Create meter                   |
-| DELETE | /meters/:id                         | Admin         | Delete meter                   |
-| POST   | /meters/:meterId/assign/:userId     | Admin         | Assign meter to user           |
-| DELETE | /meters/:meterId/unassign/:userId   | Admin         | Unassign meter from user       |
-| POST   | /meter-readings                     | Public        | Submit meter reading (IoT)     |
-| GET    | /report                             | Authenticated | Consumption report (24h)       |
-| GET    | /api-docs                           | Public        | Swagger UI                     |
+| Method | Endpoint                          | Access        | Description                    |
+| ------ | --------------------------------- | ------------- | ------------------------------ |
+| POST   | /auth/login                       | Public        | Login, returns JWT             |
+| GET    | /organizations                    | Admin         | List organizations             |
+| POST   | /organizations                    | Admin         | Create organization            |
+| DELETE | /organizations/:id                | Admin         | Delete organization            |
+| GET    | /users                            | Admin         | List users                     |
+| GET    | /users/:id                        | Admin         | User detail + assigned meters  |
+| POST   | /users                            | Admin         | Create user                    |
+| DELETE | /users/:id                        | Admin         | Delete user                    |
+| GET    | /meters                           | Authenticated | List meters (filtered by role) |
+| POST   | /meters                           | Admin         | Create meter                   |
+| DELETE | /meters/:id                       | Admin         | Delete meter                   |
+| POST   | /meters/:meterId/assign/:userId   | Admin         | Assign meter to user           |
+| DELETE | /meters/:meterId/unassign/:userId | Admin         | Unassign meter from user       |
+| POST   | /meter-readings                   | Public        | Submit meter reading (IoT)     |
+| GET    | /report                           | Authenticated | Consumption report (24h)       |
+| GET    | /api-docs                         | Public        | Swagger UI                     |
 
 `/meter-readings` has no auth — data comes from IoT devices. A dedicated rate limiter (2 req/min) is applied.
 
@@ -196,8 +197,8 @@ cd ../frontend
 docker compose up -d
 ```
 
-| Service     | URL                            |
-|-------------|--------------------------------|
+| Service     | URL                             |
+| ----------- | ------------------------------- |
 | Backend API | http://localhost:3000           |
 | Swagger     | http://localhost:3000/api-docs/ |
 | Frontend    | http://localhost:8080           |
@@ -222,6 +223,7 @@ npm test
 ```
 
 Unit tests cover:
+
 - Consumption calculation (normal, first reading, backwards index, decimal precision, pessimistic locking)
 - Auth flow (valid login, wrong email, wrong password, JWT payload)
 - User creation (duplicate email, validation, auto-assign org meters)
@@ -231,14 +233,14 @@ Unit tests cover:
 
 ## Time Spent
 
-| Task                  | Hours |
-|-----------------------|-------|
-| Planning & Design     |       |
-| Backend Development   |       |
-| Frontend Development  |       |
-| Testing               |       |
-| Documentation         |       |
-| **Total**             |       |
+| Task                 | Hours |
+| -------------------- | ----- |
+| Planning & Design    | 2h    |
+| Backend Development  | 6h    |
+| Frontend Development | 3h    |
+| Testing              | 2h    |
+| Documentation        | 1h    |
+| **Total**            | 14h   |
 
 ---
 
