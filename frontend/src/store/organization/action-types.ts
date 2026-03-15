@@ -1,0 +1,5 @@
+export enum ActionTypes {
+  FETCH_ORGANIZATIONS = 'organization/FETCH_ORGANIZATIONS',
+  CREATE_ORGANIZATION = 'organization/CREATE_ORGANIZATION',
+  DELETE_ORGANIZATION = 'organization/DELETE_ORGANIZATION',
+}

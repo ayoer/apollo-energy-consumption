@@ -1,0 +1,7 @@
+export enum ActionTypes {
+  FETCH_METERS = 'meter/FETCH_METERS',
+  CREATE_METER = 'meter/CREATE_METER',
+  DELETE_METER = 'meter/DELETE_METER',
+  ASSIGN_METER = 'meter/ASSIGN_METER',
+  UNASSIGN_METER = 'meter/UNASSIGN_METER',
+}
